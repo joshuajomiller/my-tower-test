@@ -1,0 +1,81 @@
+form,
+form input,
+form select,
+form textarea {
+    width:100%;
+    float: left;
+    margin-bottom: 10px;
+    min-height: 30px;
+}
+form {
+    border: 1px solid #d8d8d8;
+    padding: 10px;
+}
+#calloutView {
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+#calloutView span{
+    cursor: pointer;
+}
+#callouts div{
+    display: inline-block;
+}
+.list_headings, .list_value {
+    width: 100%;
+}
+.list_headings{
+    font-weight: 700;
+}
+.callout_title {
+    width: 20%;
+}
+.callout_type {
+    width: 10%;
+}
+.callout_message {
+    width: 50%;
+}
+.callout_actions {
+    width: 15%;
+    text-align: right;
+    font-weight: 700;
+}
+.callout_actions span{
+    cursor: pointer;
+}
+#callouts.grid div{
+    width:100%
+}
+#callouts.grid .list_headings{
+    display: none;
+}
+#callouts.grid div.list_value {
+    width: 20%;
+    float: left;
+    text-align: center;
+    margin: 10px;
+    border: 1px solid #eee;
+}
+#callouts.grid .callout_title {
+    font-weight: 700;
+}
+#callouts.grid .callout_actions {
+    text-align: center;
+}
+#no_callouts_message{
+    text-align: center;
+    font-weight:700;
+}
+
+@media screen and (max-width: 767px) {
+    #callouts div{
+        width:100%;
+    }
+    .callout_actions {
+        text-align: left;
+    }
+    .list_value {
+        margin-bottom: 5px;
+    }
+}

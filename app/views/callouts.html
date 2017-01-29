@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Callout Management</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/css/main.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+        <script src="/js/app.js"></script>
+    </head>
+    <body>
+        <div ng-app="callouts" ng-controller="calloutsCtrl" class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-sm-push-3">
+                    <h1 ng-bind="calloutForm.titleText"></h1>
+                    <form>
+                        <div class="col-xs-12 col-sm-12">
+                            <label for="callout_title">Title</label><br>
+                            <input type="text" id="callout_title" ng-model="currentCallout.title">
+                        </div>
+                        <div class="col-xs-12 col-sm-12">
+                            <label for="callout_type">Type</label><br>
+                            <select id="callout_type" ng-model="currentCallout.type">
+                                <option value="problem 1">Problem 1</option>
+                                <option value="problem 2">Problem 2</option>
+                                <option value="problem 3">Problem 3</option>
+                            </select>
+                        </div>
+                        <div class="col-xs-12 col-sm-12">
+                            <label for="callout_message">Message</label><br>
+                            <textarea id="callout_message" ng-model="currentCallout.message"></textarea>
+                        </div>
+                        <div class="col-xs-12 col-sm-12">
+                            <input type="hidden" id="callout_id" ng-value="currentCallout.id">
+                            <input type="button" name="callout_button" id="callout_button" ng-value="calloutForm.buttonText" ng-click="calloutForm.action()">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                    <div id="calloutView" ng-cloak ng-show="callouts.length">
+                        View: <span ng-click="setList()">List</span> | <span ng-click="setGrid()">Grid</span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                    <div id="callouts" ng-class="calloutView" ng-cloak ng-show="callouts.length">
+                        <div class="list_headings hidden-xs">
+                            <div class="callout_title">Title</div>
+                            <div class="callout_type">Type</div>
+                            <div class="callout_message">Message</div>
+                            <div class="callout_actions">Actions</div>
+                        </div>
+                        <div class="list_value" ng-repeat="x in callouts">
+                            <div class="callout_title" ng-bind="x.title"></div>
+                            <div class="callout_type" ng-bind="x.type"></div>
+                            <div class="callout_message" ng-bind="x.message"></div>
+                            <div class="callout_actions">
+                                <span ng-click="editClick(x.id)">Edit</span> | <span ng-click="deleteCallout(x.id)">Delete</span>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12">
+                        <div id="no_callouts_message" ng-cloak ng-show="!callouts.length">No callouts to show</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
